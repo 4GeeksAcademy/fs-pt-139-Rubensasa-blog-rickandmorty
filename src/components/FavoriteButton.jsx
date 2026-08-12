@@ -1,27 +1,29 @@
-import{Link} from "react-router-dom";
-import{FavoriteButtonimport} from "./FavoriteButton.jsx";
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
-export const CharacterCard = ({character}) => {
+export const FavoriteButton = ({ character }) => {
+    
+    const { store, disptch} = useGlobalReducer();
+    
+    const isFavorite = store.favorites.some(fav => fav.id === character.id);
+
+    const toggleFavorite = () => {
+
+        if (isFavorite) {
+            dispatch ({ type: "remove_favorite", payload: character.id});
+        }
+
+        else {
+            dispatch({ type: "add_favorite", payload: character });
+        }
+    };
 
     return (
 
-        <div className="card flex-shrink-0" style={{width: "18rem"}}>
+        <button className="btn btn-outline-warning" onClick={toggleFavorite} arial-label="Toggle favorite">
 
-            <img src={charecter.image} className="card-img-top" alt={character.name}/>
+            <i className={isFavorite ? "bi bi-heart-fill" : "bi bi-heart"}></i>
 
-            <div className="card-body">
-                <h5 className="card-title">{character.name}</h5>
-                <p className="card-text mb-1">Status: {character.status}</p>
-                <p className="card-text mb-1">Species: {character.species}</p>
-                <p className="card-text">Gender: {character.gender}</p>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                    <Link to={`/single/${character.id}`} className="btn btn-outline-primary">
-                        Saber más!
-                    </Link>
-
-                    <FavoriteButton character={character} />
-                </div>
-            </div>
-        </div>
+        </button>
     )
+    
 }
