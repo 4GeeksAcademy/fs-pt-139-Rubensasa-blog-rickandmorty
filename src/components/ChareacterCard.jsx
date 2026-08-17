@@ -1,5 +1,5 @@
 import{Link} from "react-router-dom";
-import{FavoriteButtonimport} from "./FavoriteButton.jsx";
+import{FavoriteButton} from "./FavoriteButton.jsx";
 
 export const CharacterCard = ({character}) => {
 
@@ -7,7 +7,7 @@ export const CharacterCard = ({character}) => {
 
         <div className="card flex-shrink-0" style={{width: "18rem"}}>
 
-            <img src={charecter.image} className="card-img-top" alt={character.name}/>
+            <img src={character.image} className="card-img-top" alt={character.name}/>
 
             <div className="card-body">
                 <h5 className="card-title">{character.name}</h5>

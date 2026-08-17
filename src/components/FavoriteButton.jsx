@@ -2,7 +2,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const FavoriteButton = ({ character }) => {
     
-    const { store, disptch} = useGlobalReducer();
+    const { store, dispatch} = useGlobalReducer();
     
     const isFavorite = store.favorites.some(fav => fav.id === character.id);
 

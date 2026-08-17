@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 
 export const Single = () => {
 
-  const { theid } = useParams();
+  const { theId } = useParams();
   const [character, setCharacter] = useState(null);
 
   useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/character/${theid}`)
+    fetch(`https://rickandmortyapi.com/api/character/${theId}`)
       .then(resp => resp.json())
       .then(data => setCharacter(data))
       .catch(err => console.error("Error fetching character:", err));
-  }, [theid]);
+  }, [theId]);
 
   if (!character) {
     return <div className="text-center mt-5">Loading...</div>;

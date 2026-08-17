@@ -43,9 +43,13 @@ export const Navbar = () => {
           		
 					{store.favorites.map(fav => (
             	
-						<li key={fav.id} className="dropdown-item d-flex justify-content-between align-items-center">
-            	
-						{fav.name}
+						<li key={fav.id}>
+
+							<Link to = {`/single/${fav.id}`} className="dropdown-item">      
+
+							{fav.name}
+							
+							</Link>
 
 	            		</li>
 
